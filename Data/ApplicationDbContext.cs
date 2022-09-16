@@ -9,5 +9,7 @@ namespace LeaveManagementWeb_Core_6.Data
             : base(options)
         {
         }
+        public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
+        public DbSet<LeaveType> LeaveTypes { get; set; }
     }
 }
