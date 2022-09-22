@@ -1,0 +1,70 @@
+﻿@model IEnumerable<LeaveTypeVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultDays)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DefaultDays)
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square"></i></a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-info"></i></a> |
+                    @* <a asp-action="Delete" class="btn btn-warning deleteBtn" asp-route-id="@item.Id">Delete</a>*@
+                    <button data-id="@item.Id" class="btn btn-warning deleteBtn" type="button"><i class="fa-solid fa-trash"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form asp-action="Delete" id="DeleteForm">
+    <input type="hidden" id="leaveTypeId" name="Id" />
+</form>
+@section Scripts{
+    <script>
+        $('.table').DataTable();
+        $(document).ready(function () {
+            $('.deleteBtn').click(function (e) {
+                swal({
+                    title: 'Are you sure!',
+                    text: 'Are you sure you want to delete this record?',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true
+                }).then((confirm) => {
+                    if (confirm) {
+                        var btn = $(this);
+                        var Id = btn.data("id");
+                        $("#leaveTypeId").val(Id);
+                        $("#DeleteForm").submit();
+
+                    }
+                });
+            });
+        });
+    </script>
+}

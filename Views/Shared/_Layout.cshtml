@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - LeaveManagementWeb_Core_6</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LeaveManagementWeb_Core_6.styles.css" asp-append-version="true" />
 </head>
@@ -12,12 +15,12 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar navbar-dark bg-dark border-bottom box-shadow mb-3">
             @*<div class="container-fluid">*@
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LeaveManagementWeb_Core_6</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LeaveManagementWeb_Core_6</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
@@ -32,7 +35,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Leave Management</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Leave Types</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="LeaveTypes" asp-action="Index">Leave Types</a></li>
                                 <li><a class="dropdown-item" href="#">Leave Allocations</a></li>
                                 <li><a class="dropdown-item" href="#">Leave Request</a></li>
                                 <li><hr class="dropdown-divider"></li>
@@ -42,7 +45,7 @@
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
-                </div>
+            </div>
             @*</div>*@
         </nav>
     </header>
@@ -59,6 +62,9 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
