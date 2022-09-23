@@ -1,5 +1,7 @@
 using LeaveManagementWeb_Core_6.Configuration;
+using LeaveManagementWeb_Core_6.Contracts;
 using LeaveManagementWeb_Core_6.Data;
+using LeaveManagementWeb_Core_6.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +17,9 @@ builder.Services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireC
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
